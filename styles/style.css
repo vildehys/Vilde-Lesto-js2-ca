@@ -1,0 +1,11 @@
+.container {
+  display: block;
+  text-align: center;
+}
+
+.cards {
+  border-style: solid;
+  border-color: red;
+  margin-top: 3rem;
+  padding: 10px;
+}
