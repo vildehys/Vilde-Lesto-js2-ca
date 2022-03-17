@@ -1,4 +1,6 @@
 import { baseUrl } from "./data/api.js";
+import { getExistingFavs } from "./utils/articles/favArticle.js"
+
 
 const articlesContainer = document.querySelector(".container");
 
@@ -45,20 +47,34 @@ function handleClick() {
      const title = this.dataset.title;
 
      const currentFavs = getExistingFavs();
-     console.log(currentFavs);
 
+     const articleExists = currentFavs.find(function (fav) {
+         return fav.id === id;
 
- }
+     });
 
- function getExistingFavs() {
-     const favs = localStorage.getItem("favourites");
+     if (!articleExists) {
+        const article = {id: id, title: title};
 
-     if (!favs) {
-         return []
-     } else {
-         return favs;
+        currentFavs.push(article);
+   
+        saveFavs(currentFavs);
+     }
+     else {
+         const newFavs = currentFavs.filter((fav) => fav.id !== id);
+         saveFavs(newFavs);
      }
     }
+
+
+
+    function saveFavs(favs) {
+        localStorage.setItem("favourites", JSON.stringify(favs));
+    }
+
+
+
+
  
  
 
