@@ -17,7 +17,7 @@ async function getArticles(baseUrl) {
         <h2> ${article.attributes.title} </h2>
         <h5> ${article.attributes.author} </h5>
         <p> ${article.attributes.body} </p>
-        <i class="far fa-heart" data-id="${article.id}" data-title="${article.attributes.title}" ></i>
+        <i class="far fa-heart" data-id="${article.id}" data-title="${article.attributes.title}" data-title="${article.attributes.author}" data-title="${article.attributes.body}" ></i>
 
         </div>`;
      });
@@ -48,6 +48,9 @@ function handleClick() {
      const author = this.dataset.author;
      const body = this.dataset.body;
 
+
+
+//Checks if article exists already
      const currentFavs = getExistingFavs();
 
      const articleExists = currentFavs.find(function (fav) {
@@ -55,11 +58,11 @@ function handleClick() {
 
      });
 
+// Adds article if not already existing
+
      if (!articleExists) {
         const article = {id: id, title: title, author: author, body: body};
-
         currentFavs.push(article);
-   
         saveFavs(currentFavs);
      }
      else {
@@ -67,8 +70,6 @@ function handleClick() {
          saveFavs(newFavs);
      }
     }
-
-
 
     function saveFavs(favs) {
         localStorage.setItem("favourites", JSON.stringify(favs));
