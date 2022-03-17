@@ -10,10 +10,11 @@ if(favourites.length === 0) {
 
 favourites.forEach(favourite => {
     articlesContainer.innerHTML += `<div class="article">
-    <h1>${favourite.title}</h1>
-    <h2>${favourite.id}</h2>
-    <h2>${favourite.author}</h2>
-    <h2>${favourite.body}</h2>
+    <div class="article-content">
+    <h2>${favourite.title}</h2>
+    <h5>${favourite.author}</h5>
+    <p>${favourite.body}</p>
     <i clas="fa fa-heart"></i>
+    </div>
     </div>`
 })
