@@ -4,20 +4,36 @@ import { getExistingFavs } from "./utils/articles/favArticle.js"
 
 const articlesContainer = document.querySelector(".container");
 
+const favourites = getExistingFavs();
+
 async function getArticles(baseUrl) {
   try {
     const response = await fetch(baseUrl);
     const articles = await response.json();
     
 
-    articles.data.forEach(article =>{
+    articles.data.forEach((article) => {
+        let cssClass = "far";
+
+        const doesArticleExist = favourites.find(function(fav) {
+            console.log(fav)
+
+            return parseInt(fav.id) === article.id
+        })
+
+        console.log(doesArticleExist);
+
+        if(doesArticleExist) {
+            cssClass= "fa";
+        }
+        
         articlesContainer.innerHTML += 
         `
         <div class="article">
         <h2> ${article.attributes.title} </h2>
         <h5> ${article.attributes.author} </h5>
         <p> ${article.attributes.body} </p>
-        <i class="far fa-heart" data-id="${article.id}" data-title="${article.attributes.title}" data-title="${article.attributes.author}" data-title="${article.attributes.body}" ></i>
+        <i class="${cssClass} fa-heart" data-id="${article.id}" data-title="${article.attributes.title}" data-author="${article.attributes.author}" data-body="${article.attributes.body}" ></i>
 
         </div>`;
      });
