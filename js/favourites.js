@@ -1,4 +1,4 @@
-import { getExistingFavs } from "../utils/articles/favArticle.js"
+import { getExistingFavs } from "./utils/articles/favArticle.js";
 
 const favourites = getExistingFavs();
 
@@ -6,7 +6,12 @@ const articlesContainer = document.querySelector(".container");
 
 favourites.forEach(favourite => {
     articlesContainer.innerHTML += `<div class="article">
-    <h4>${favourite.title}</h4>
+    <h1>${favourite.title}</h1>
+    <h2>${favourite.id}</h2>
+    <h2>${favourite.author}</h2>
+    <h2>${favourite.body}</h2>
+
+
     <i clas="fa fa-heart"></i>
     </div>`
 })

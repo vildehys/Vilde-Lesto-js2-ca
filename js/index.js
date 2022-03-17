@@ -17,7 +17,7 @@ async function getArticles(baseUrl) {
         <h2> ${article.attributes.title} </h2>
         <h5> ${article.attributes.author} </h5>
         <p> ${article.attributes.body} </p>
-        <i class="far fa-heart" data-id="${article.id}" data-title="${article.attributes.title}"></i>
+        <i class="far fa-heart" data-id="${article.id}" data-title="${article.attributes.title}" ></i>
 
         </div>`;
      });
@@ -45,6 +45,8 @@ function handleClick() {
 
      const id = this.dataset.id;
      const title = this.dataset.title;
+     const author = this.dataset.author;
+     const body = this.dataset.body;
 
      const currentFavs = getExistingFavs();
 
@@ -54,7 +56,7 @@ function handleClick() {
      });
 
      if (!articleExists) {
-        const article = {id: id, title: title};
+        const article = {id: id, title: title, author: author, body: body};
 
         currentFavs.push(article);
    
