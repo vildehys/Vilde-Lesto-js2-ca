@@ -5,8 +5,8 @@ const favourites = getExistingFavs();
 
 const articlesContainer = document.querySelector(".container");
 
-
-favourites.forEach(favourite => {
+if (favourites && favourites.length >= 1) {
+  favourites.forEach(favourite => {
     articlesContainer.innerHTML += `
     <div class="article">
     <div class="article-content">
@@ -16,7 +16,10 @@ favourites.forEach(favourite => {
     <i clas="fa fa-heart"></i>
     </div>
     </div>`
-})
+});
+} else {
+  articlesContainer.innerHTML = "<h6>You have no favorites yet.</h6>";
+}
 
 const button = document.querySelector("#clear");
 button.addEventListener("click", clearButton);
