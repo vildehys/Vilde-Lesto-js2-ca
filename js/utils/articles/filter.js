@@ -5,15 +5,18 @@ export function filterArticles(articles) {
       const filterValue = event.target.value.trim().toLowerCase();
       console.log(filterValue)
   
-      const filteredList = articles.filter((article) => {
+      const filteredList = {
+        data: articles.filter((article) => {
           
           let val = article.attributes;
         if (val.title.toLowerCase().includes(filterValue)) {
             console.log(article.attributes.title)
           return true;
         }
-      });
-      createHtml();
+      })
+    };
+
+      createHtml(filteredList);
     };
   }
   
