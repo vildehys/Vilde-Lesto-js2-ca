@@ -49,6 +49,25 @@ body {
   font-size: 18px;
 }
 
+#clear {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  width: 100px;
+  height: 40px;
+  background-color: green;
+  border-color: green;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+    rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+.clear-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
 h2 {
   font-size: 35px;
   font-weight: 1000;
@@ -57,6 +76,14 @@ h2 {
 h5 {
   font-size: 25px;
   text-decoration: underline;
+}
+
+h6 {
+  color: white;
+  text-align: center;
+  margin-top: 150px;
+  font-size: 50px;
+  text-decoration: overline underline;
 }
 
 p {

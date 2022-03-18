@@ -6,4 +6,8 @@ export function getExistingFavs() {
     } else {
         return JSON.parse(favs);
     }
-   }
+}
+
+export function clearStorage() {
+    localStorage.removeItem("favourites");
+  }
